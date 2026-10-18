@@ -1,0 +1,160 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Panasonic Comfort Cloud",
+        "description": "Inicie sessão com o Panasonic ID que usa na app Comfort Cloud. Sugestão: um Panasonic ID separado, com o qual partilha os seus ares condicionados, é a configuração mais fiável, porque a app e o Home Assistant não terminam a sessão um do outro.",
+        "data": {
+          "username": "Panasonic ID (email)",
+          "password": "Palavra-passe"
+        }
+      },
+      "mfa": {
+        "title": "Autenticação de dois fatores",
+        "description": "A Panasonic pediu um código de verificação. Introduza o código recebido por SMS, email ou na app de autenticação associada ao seu Panasonic ID.",
+        "data": {
+          "code": "Código de verificação"
+        }
+      },
+      "agreements": {
+        "title": "Termos da Panasonic atualizados",
+        "description": "A Panasonic atualizou os Termos e Condições, a Política de Privacidade e/ou a Política de Cookies e bloqueia o acesso à API até serem aceites. Pode aceitá-los aqui (o mesmo que tocar em Aceitar na app Comfort Cloud) ou cancelar e aceitá-los na app. Se aceitar aqui, as atualizações futuras também serão aceites automaticamente; pode desativar isso nas opções da integração.",
+        "data": {
+          "accept": "Aceitar os termos atualizados da Panasonic para esta conta"
+        }
+      },
+      "reauth_confirm": {
+        "title": "Iniciar sessão novamente",
+        "description": "A Panasonic precisa que inicie sessão novamente como {username}.",
+        "data": {
+          "password": "Palavra-passe"
+        }
+      }
+    },
+    "error": {
+      "invalid_auth": "Panasonic ID ou palavra-passe errados, ou a conta está temporariamente bloqueada após demasiadas tentativas.",
+      "cannot_connect": "Não foi possível contactar o Panasonic Comfort Cloud. Consulte os registos e tente novamente.",
+      "invalid_code": "O código de verificação não foi aceite.",
+      "mfa_expired": "O passo de verificação expirou. Inicie sessão novamente para receber um novo código.",
+      "agreement_not_accepted": "Os termos têm de ser aceites para o Comfort Cloud funcionar. Aceite-os aqui ou na app Comfort Cloud.",
+      "agreement_failed": "Não foi possível aceitar os termos. Aceite-os na app Comfort Cloud e tente novamente.",
+      "unknown": "Erro inesperado. Consulte os registos para mais detalhes."
+    },
+    "abort": {
+      "already_configured": "Este Panasonic ID já está configurado.",
+      "no_devices": "Não foram encontrados ares condicionados neste Panasonic ID.",
+      "reauth_successful": "Sessão iniciada novamente com sucesso."
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "Opções do Panasonic Comfort Cloud",
+        "data": {
+          "scan_interval": "Intervalo de atualização",
+          "enable_energy": "Sensores de energia diária",
+          "auto_accept_agreements": "Aceitar automaticamente os termos atualizados da Panasonic",
+          "app_version": "Versão da app Comfort Cloud (manual)"
+        },
+        "data_description": {
+          "scan_interval": "Com que frequência cada ar condicionado é consultado. A Panasonic pode limitar consultas muito frequentes.",
+          "app_version": "Deixe vazio para detetar automaticamente. Defina apenas se os registos indicarem que a versão da app foi rejeitada: use a versão indicada nas definições da app Comfort Cloud ou na loja de aplicações (por exemplo 4.4.0)."
+        }
+      }
+    }
+  },
+  "entity": {
+    "climate": {
+      "air_conditioner": {
+        "state_attributes": {
+          "fan_mode": {
+            "state": {
+              "auto": "Automático",
+              "low": "Baixa",
+              "medium_low": "Média-baixa",
+              "medium": "Média",
+              "medium_high": "Média-alta",
+              "high": "Alta"
+            }
+          },
+          "preset_mode": {
+            "state": {
+              "none": "Normal",
+              "boost": "Powerful",
+              "quiet": "Silencioso"
+            }
+          },
+          "swing_mode": {
+            "state": {
+              "auto": "Automático",
+              "up": "Cima",
+              "mid_up": "Meio-cima",
+              "mid": "Meio",
+              "mid_down": "Meio-baixo",
+              "down": "Baixo"
+            }
+          },
+          "swing_horizontal_mode": {
+            "state": {
+              "auto": "Automático",
+              "left": "Esquerda",
+              "mid_left": "Meio-esquerda",
+              "mid": "Meio",
+              "mid_right": "Meio-direita",
+              "right": "Direita"
+            }
+          }
+        }
+      }
+    },
+    "sensor": {
+      "inside_temperature": {
+        "name": "Temperatura interior"
+      },
+      "outside_temperature": {
+        "name": "Temperatura exterior"
+      },
+      "energy_today": {
+        "name": "Energia hoje"
+      },
+      "data_source": {
+        "name": "Origem dos dados",
+        "state": {
+          "live": "Direto",
+          "cached": "Em cache"
+        }
+      }
+    },
+    "switch": {
+      "nanoe": {
+        "name": "nanoe"
+      },
+      "eco_navi": {
+        "name": "ECONAVI"
+      },
+      "ai_eco": {
+        "name": "AI ECO"
+      },
+      "inside_cleaning": {
+        "name": "Limpeza interior"
+      }
+    }
+  },
+  "exceptions": {
+    "auth_failed": {
+      "message": "A Panasonic rejeitou o início de sessão. Abra Definições > Dispositivos e serviços para iniciar sessão novamente."
+    },
+    "agreement_required": {
+      "message": "A Panasonic exige a aceitação de termos atualizados. Aceite-os na app Comfort Cloud ou ative a aceitação automática nas opções da integração."
+    },
+    "command_failed": {
+      "message": "Não foi possível enviar o comando para {device}: {error}"
+    }
+  },
+  "issues": {
+    "agreement_required": {
+      "title": "É necessário aceitar os termos da Panasonic",
+      "description": "A Panasonic atualizou os termos e bloqueia o acesso ao Comfort Cloud até serem aceites. Abra a app Comfort Cloud com esta conta e aceite-os, ou ative \"Aceitar automaticamente os termos atualizados da Panasonic\" nas opções da integração. Esta mensagem desaparece quando o acesso voltar a funcionar."
+    }
+  }
+}

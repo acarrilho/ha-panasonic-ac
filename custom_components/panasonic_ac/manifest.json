@@ -1,0 +1,13 @@
+{
+  "domain": "panasonic_ac",
+  "name": "Panasonic Comfort Cloud (AC)",
+  "codeowners": [],
+  "config_flow": true,
+  "documentation": "https://github.com/acarrilho/ha-panasonic-ac",
+  "integration_type": "hub",
+  "iot_class": "cloud_polling",
+  "issue_tracker": "https://github.com/acarrilho/ha-panasonic-ac/issues",
+  "loggers": ["custom_components.panasonic_ac"],
+  "requirements": [],
+  "version": "1.0.0"
+}

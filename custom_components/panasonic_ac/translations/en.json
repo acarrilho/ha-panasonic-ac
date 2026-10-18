@@ -1,0 +1,160 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Panasonic Comfort Cloud",
+        "description": "Sign in with the Panasonic ID you use in the Comfort Cloud app. Tip: a separate Panasonic ID that you share your air conditioners with is the most reliable setup, because the app and Home Assistant won't sign each other out.",
+        "data": {
+          "username": "Panasonic ID (email)",
+          "password": "Password"
+        }
+      },
+      "mfa": {
+        "title": "Two-factor authentication",
+        "description": "Panasonic asked for a verification code. Enter the code from the SMS, email or authenticator app linked to your Panasonic ID.",
+        "data": {
+          "code": "Verification code"
+        }
+      },
+      "agreements": {
+        "title": "Updated Panasonic terms",
+        "description": "Panasonic has updated its Terms & Conditions, Privacy Policy and/or Cookie Policy and blocks API access until they're accepted. You can accept them here (the same as tapping Accept in the Comfort Cloud app), or cancel and accept them in the app instead. If you accept here, future updates will also be accepted automatically; you can turn that off in the integration options.",
+        "data": {
+          "accept": "Accept the updated Panasonic terms for this account"
+        }
+      },
+      "reauth_confirm": {
+        "title": "Sign in again",
+        "description": "Panasonic needs you to sign in again as {username}.",
+        "data": {
+          "password": "Password"
+        }
+      }
+    },
+    "error": {
+      "invalid_auth": "Wrong Panasonic ID or password, or the account is temporarily locked after too many attempts.",
+      "cannot_connect": "Could not reach Panasonic Comfort Cloud. Check the logs for details and try again.",
+      "invalid_code": "That verification code was not accepted.",
+      "mfa_expired": "The verification step expired. Sign in again to get a new code.",
+      "agreement_not_accepted": "The terms must be accepted for Comfort Cloud to work. Accept them here or in the Comfort Cloud app.",
+      "agreement_failed": "Accepting the terms failed. Accept them in the Comfort Cloud app, then try again.",
+      "unknown": "Unexpected error. Check the logs for details."
+    },
+    "abort": {
+      "already_configured": "This Panasonic ID is already configured.",
+      "no_devices": "No air conditioners were found on this Panasonic ID.",
+      "reauth_successful": "Signed in again successfully."
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "Panasonic Comfort Cloud options",
+        "data": {
+          "scan_interval": "Polling interval",
+          "enable_energy": "Daily energy sensors",
+          "auto_accept_agreements": "Accept updated Panasonic terms automatically",
+          "app_version": "Comfort Cloud app version override"
+        },
+        "data_description": {
+          "scan_interval": "How often each air conditioner is polled. Panasonic may throttle very frequent polling.",
+          "app_version": "Leave empty to detect it automatically. Only set this if the logs say the app version was rejected: use the version shown in the Comfort Cloud app's settings or the app store (for example 4.4.0)."
+        }
+      }
+    }
+  },
+  "entity": {
+    "climate": {
+      "air_conditioner": {
+        "state_attributes": {
+          "fan_mode": {
+            "state": {
+              "auto": "Auto",
+              "low": "Low",
+              "medium_low": "Medium-low",
+              "medium": "Medium",
+              "medium_high": "Medium-high",
+              "high": "High"
+            }
+          },
+          "preset_mode": {
+            "state": {
+              "none": "Normal",
+              "boost": "Powerful",
+              "quiet": "Quiet"
+            }
+          },
+          "swing_mode": {
+            "state": {
+              "auto": "Auto",
+              "up": "Up",
+              "mid_up": "Mid-up",
+              "mid": "Middle",
+              "mid_down": "Mid-down",
+              "down": "Down"
+            }
+          },
+          "swing_horizontal_mode": {
+            "state": {
+              "auto": "Auto",
+              "left": "Left",
+              "mid_left": "Mid-left",
+              "mid": "Middle",
+              "mid_right": "Mid-right",
+              "right": "Right"
+            }
+          }
+        }
+      }
+    },
+    "sensor": {
+      "inside_temperature": {
+        "name": "Inside temperature"
+      },
+      "outside_temperature": {
+        "name": "Outside temperature"
+      },
+      "energy_today": {
+        "name": "Energy today"
+      },
+      "data_source": {
+        "name": "Data source",
+        "state": {
+          "live": "Live",
+          "cached": "Cached"
+        }
+      }
+    },
+    "switch": {
+      "nanoe": {
+        "name": "nanoe"
+      },
+      "eco_navi": {
+        "name": "ECONAVI"
+      },
+      "ai_eco": {
+        "name": "AI ECO"
+      },
+      "inside_cleaning": {
+        "name": "Inside cleaning"
+      }
+    }
+  },
+  "exceptions": {
+    "auth_failed": {
+      "message": "Panasonic rejected the login. Open Settings > Devices & services to sign in again."
+    },
+    "agreement_required": {
+      "message": "Panasonic requires updated terms to be accepted. Accept them in the Comfort Cloud app, or enable automatic acceptance in the integration options."
+    },
+    "command_failed": {
+      "message": "Could not send the command to {device}: {error}"
+    }
+  },
+  "issues": {
+    "agreement_required": {
+      "title": "Panasonic terms need to be accepted",
+      "description": "Panasonic has updated its terms and blocks Comfort Cloud access until they're accepted. Open the Comfort Cloud app with this account and accept them, or enable \"Accept updated Panasonic terms automatically\" in the integration options. This message disappears once access works again."
+    }
+  }
+}
